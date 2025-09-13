@@ -48,7 +48,7 @@ public class SequenceUtils {
      * @param n кількість чисел послідовності
      * @return список {@link SequenceNumber}, що містить індекси та значення чисел Люка
      */
-    public static List<SequenceNumber> lucas(int n) {
+    public static List<SequenceNumber> luca(int n) {
         List<SequenceNumber> list = new ArrayList<>();
         long a = 1, b = 3;
         for (int i = 1; i <= n; i++) {
