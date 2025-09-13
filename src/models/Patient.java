@@ -106,4 +106,17 @@ public class Patient {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Пацієнт:\n" +
+                "id='" + id + '\'' +
+                ", \nІмʼя='" + firstName + '\'' +
+                ", \nПо батькові='" + lastName + '\'' +
+                ", \nПрізвище='" + surName + '\'' +
+                ", \nАдреса='" + address + '\'' +
+                ", \nНомер телефону='" + phoneNumber + '\'' +
+                ", \nНомер мед.карти='" + medicalCardNumber + '\'' +
+                ", \nДіагноз='" + diagnosis + '\'' +
+                "\n====================================================";
+    }
 }
