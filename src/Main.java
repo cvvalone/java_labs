@@ -7,16 +7,40 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
         Patient[] patients = createMockPatients();
 
-        System.out.println("\n=== Пацієнти з діагнозом 'Грип' ===");
-        printPatientsByDiagnosis(patients, "Грип");
 
-        System.out.println("\n=== Пацієнти з номерами медкарток у діапазоні 100000 - 200000 ===");
-        printPatientsByMedicalCardRange(patients, 100000, 200000);
+        System.out.println("Введіть діагноз пацієнта:");
+        String diagnosis = sc.next();
+        System.out.println("\n=== Пацієнти з діагнозом " + diagnosis + " ===");
+        printPatientsByDiagnosis(patients, diagnosis);
 
-        System.out.println("\n=== Пацієнти з номером, що починається на 6 ===");
-        printCountAndPatientsByFirstDigitNumber(patients, 6);
+
+        System.out.println("Введіть діапазон номерів медкарток:");
+        System.out.print("від:");
+        int from = sc.nextInt();
+        int to;
+        while(true){
+            System.out.print("по:");
+            to = sc.nextInt();
+            if(to<from){
+                System.out.print("Верхнє число діапазону не може бути менше за: " + from);
+            }else{
+                break;
+            }
+        }
+
+        System.out.println("\n=== Пацієнти з номерами медкарток у діапазоні " + from +  " - " + to + " ===");
+        printPatientsByMedicalCardRange(patients, from, to);
+
+
+        System.out.print("Введіть першу цифру номера:");
+        int startWith = sc.nextInt();
+        System.out.println("\n=== Пацієнти з номером, що починається на " + startWith + " ===");
+        printCountAndPatientsByFirstDigitNumber(patients, startWith);
     }
 
     public static Patient[] createMockPatients() {
