@@ -1,19 +1,22 @@
 package Arena.Menu;
 
 import Arena.Droid.Droid;
+import Arena.Droid.DroidFactory;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
-    private List<Droid> availableDroids;  // усі дроїди гри
-    private Droid playerDroid;            // дроїд гравця
-    private Droid enemyDroid;             // дроїд суперника
-    private Scanner scanner;              // для вводу
+    private List<Droid> availableDroids;
+    private Droid playerDroid;
+    private Droid enemyDroid;
+    private Scanner scanner;
+    private int countOfDroids;
 
-    public Menu(List<Droid> droids) {
+    public Menu(List<Droid> droids, int countOfDroids) {
         this.availableDroids = droids;
+        this.countOfDroids = countOfDroids;
         this.scanner = new Scanner(System.in);
     }
 
@@ -95,7 +98,7 @@ public class Menu {
 
             int choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> active.attack(target);
+                case 1 -> active.attack(target).animateAttack(target);
                 case 2 -> active.specialAbility(target);
                 case 3 -> System.out.println(active.getName() + " пропускає хід.");
                 default -> System.out.println("Невірний вибір, втрачено хід!");
@@ -123,6 +126,7 @@ public class Menu {
         } else {
             System.out.println("Суперник переміг!");
         }
+        clearDroids();
     }
 
     // ===== Допоміжний метод =====
@@ -130,5 +134,10 @@ public class Menu {
         for (int i = 0; i < availableDroids.size(); i++) {
             System.out.println((i + 1) + ". " + availableDroids.get(i).getName());
         }
+    }
+
+    private void clearDroids() {
+        availableDroids.clear();
+        DroidFactory.generateDroids(countOfDroids);
     }
 }

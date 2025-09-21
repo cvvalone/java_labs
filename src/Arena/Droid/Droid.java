@@ -1,6 +1,8 @@
 package Arena.Droid;
 
 
+import Arena.Battle.Arena.BattleAnimation;
+
 import java.util.Random;
 
 public abstract class Droid {
@@ -23,16 +25,23 @@ public abstract class Droid {
     public abstract void specialAbility(Droid target);
     public abstract String getType();
 
-    public void attack(Droid target) {
+    public Droid attack(Droid target) {
         if (!isAlive()) {
             System.out.println(name + " мертвий і не може атакувати.");
-            return;
+            return this;
         }
         int dealtDamage = damage;
         target.takeDamage(dealtDamage);
         System.out.println(name + " атакує " + target.getName() +
                 " на " + dealtDamage + " урон. (HP ворога: " + target.getHealth() + ")");
+        return this;
     }
+
+    public Droid animateAttack(Droid target) {
+        BattleAnimation.attackAnimation(this, target);
+        return this;
+    }
+
 
     public void takeDamage(int amount) {
         health -= amount;

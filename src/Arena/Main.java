@@ -15,14 +15,15 @@ public class Main {
         int n;
         while (true){
             try {
-                System.out.println("Введіть кількість дроїдів, яка має бути на арені!");
-                n = sc.nextInt();
+                System.out.println("Введіть число - кількість дроїдів, яка має бути на арені!");
+                n = Integer.parseInt(sc.nextLine());
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("Введено не число, спробуйте ще раз");
             }
         }
         List<Droid> availableDroids = DroidFactory.generateDroids(n);
-        Menu menu = new Menu(availableDroids);
-
+        Menu menu = new Menu(availableDroids, n);
+        menu.showMainMenu();
     }
 }
