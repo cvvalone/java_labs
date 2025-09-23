@@ -31,5 +31,18 @@ public class WarriorDroid extends Droid {
     public String getType() {
         return "WarriorDroid";
     }
+
+    public String[] getModel() {
+        return new String[] {
+                "    /^^\\",
+                "   |O  O|",
+                "   | \\/ |",
+                "   | -- |",
+                "  /|_|_|\\",
+                "    / \\",
+                "   /   \\"
+        };
+    }
+
 }
 

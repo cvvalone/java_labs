@@ -20,4 +20,18 @@ public class HealerDroid extends Droid {
     public String getType() {
         return "HealerDroid";
     }
+
+    @Override
+    public String[] getModel() {
+        return new String[] {
+                "    /^^\\",
+                "   ( - )",
+                "   | + |",
+                "   |   |",
+                "  /| | |\\",
+                "    / \\",
+                "   *   *"
+        };
+    }
+
 }

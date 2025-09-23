@@ -21,4 +21,18 @@ public class VampireDroid extends Droid {
     public String getType() {
         return "VampireDroid";
     }
+
+    @Override
+    public String[] getModel() {
+        return new String[] {
+                "    /^^\\",
+                "   (O  O)",
+                "   ( ^ )",
+                "   | V |",
+                "  /|_|_|\\",
+                "    / \\",
+                "   /   \\"
+        };
+    }
+
 }

@@ -44,4 +44,21 @@ public class TankDroid extends Droid {
     public String getType() {
         return "TankDroid";
     }
+
+    @Override
+    public String[] getModel() {
+        return new String[] {
+                "   _________",
+                "  / ======= \\",
+                " / __________\\",
+                "| ___________ |",
+                "| | -     - | |",
+                "| |    .    | |",
+                "| |___===___| |",
+                "\\_____________/",
+                "   /   |   \\",
+                "  *    |    *"
+        };
+    }
+
 }

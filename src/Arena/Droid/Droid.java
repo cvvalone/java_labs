@@ -24,6 +24,7 @@ public abstract class Droid {
 
     public abstract void specialAbility(Droid target);
     public abstract String getType();
+    public abstract String[] getModel();
 
     public Droid attack(Droid target) {
         if (!isAlive()) {

@@ -28,14 +28,16 @@ public class Menu {
             System.out.println("1. Почати гру");
             System.out.println("2. Обрати дроїдів");
             System.out.println("3. Інформація про дроїдів");
-            System.out.println("4. Вихід");
+            System.out.println("4. Додати дроїдів");
+            System.out.println("5. Вихід");
 
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> startBattle();
                 case 2 -> chooseDroids();
                 case 3 -> showDroidsInfo();
-                case 4 -> {
+                case 4 -> addDroids();
+                case 5 -> {
                     running = false;
                     System.out.println("Гру завершено.");
                 }
@@ -68,8 +70,30 @@ public class Menu {
         }
     }
 
+    private int aliveDroidsCount() {
+        int count = 0;
+        for (Droid d : availableDroids) {
+            if (d.isAlive()) count++;
+        }
+        return count;
+    }
+
+    private void addDroids() {
+        System.out.println("Скільки дроїдів додати?");
+        int n = scanner.nextInt();
+        List<Droid> newDroids = DroidFactory.generateDroids(n);
+        availableDroids.addAll(newDroids);
+        System.out.println(n + " дроїдів додано. Тепер на арені " + availableDroids.size() + " дроїдів.");
+    }
+
+
+
     // ===== Запуск бою =====
     private void startBattle() {
+        if (aliveDroidsCount() <= 1) {
+            System.out.println("Недостатньо живих дроїдів для нового бою!");
+            return;
+        }
         if (playerDroid == null || enemyDroid == null) {
             System.out.println("Спочатку оберіть дроїдів!");
             return;

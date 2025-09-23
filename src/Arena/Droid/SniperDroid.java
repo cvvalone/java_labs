@@ -36,4 +36,16 @@ public class SniperDroid extends Droid
     public String getType() {
         return "SniperDroid";
     }
+
+    @Override
+    public String[] getModel() {
+        return new String[] {
+                "    /^^\\",
+                "   |o  o|",
+                "   |    |",
+                "   |---|======>",
+                "    / \\",
+                "   /   \\"
+        };
+    }
 }
