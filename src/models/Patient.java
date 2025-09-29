@@ -12,8 +12,6 @@ public class Patient {
     private String medicalCardNumber;
     private String diagnosis;
 
-    //Constructor without params
-    public Patient() {}
 
 
     public Patient(String firstName, String lastName, String surName,

@@ -1,5 +1,6 @@
 import models.Patient;
 
+import java.rmi.UnexpectedException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,7 +44,7 @@ public class Main {
         printCountAndPatientsByFirstDigitNumber(patients, startWith);
     }
 
-    public static Patient[] createMockPatients() {
+    private static Patient[] createMockPatients() {
         return new Patient[] {
                 new Patient("Іван", "Грицев", "Іванович", "Київ", "501234567", "123456", "Грип"),
                 new Patient("Демʼян", "Демʼян", "Демʼянович", "Львів", "637654321", "987654", "Алергія"),
@@ -68,7 +69,7 @@ public class Main {
                 if (number >= min && number <= max) {
                     System.out.println(p);
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Неможливо обробити номер медкартки пацієнта: " + p.getMedicalCardNumber());
             }
         }
@@ -80,7 +81,7 @@ public class Main {
                 if(p.getPhoneNumber().startsWith(String.valueOf(numberStartsWith))){
                     System.out.println(p);
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Неможливо обробити номер медкартки пацієнта: " + p.getMedicalCardNumber());
             }
         }
